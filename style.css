@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap'); 
+/* Importa a fonte Poppins do Google Fonts, com pesos 300 (leve) e 600 (semi-bold) */
+
+/* Estilo base do corpo da página */
+body {
+  font-family: 'Poppins', sans-serif; /* Define fonte padrão */
+  background: linear-gradient(135deg, #ece9e6, #ffffff); /* Fundo degradê diagonal suave */
+  margin: 0; /* Remove margem padrão do navegador */
+  padding: 30px 0; /* Espaçamento vertical interno */
+  color: #444; /* Cor padrão do texto */
+}
+
+/* Estilo do título principal */
+h1 {
+  font-weight: 600; /* Peso da fonte semi-bold */
+  font-size: 2.5rem; /* Tamanho da fonte grande */
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 40px; /* Espaço abaixo do título */
+  color: #222; /* Cor do texto mais escura */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Sombra sutil para destaque */
+}
+
+/* Container da galeria usando grid */
+.galeria {
+  display: grid; /* Define grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Colunas responsivas, mínimo 180px */
+  gap: 25px; /* Espaçamento entre os itens */
+  max-width: 1100px; /* Largura máxima da galeria */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0 20px; /* Espaçamento horizontal interno */
+}
+
+/* Estilo dos itens individuais da galeria */
+.item {
+  width: 180px; /* Largura fixa */
+  border-radius: 16px; /* Bordas arredondadas */
+  overflow: hidden; /* Esconde conteúdo que ultrapassar os limites */
+  background: #fff; /* Fundo branco */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Sombra suave */
+  cursor: pointer; /* Cursor de mãozinha para indicar clique */
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Transições suaves para hover */
+  display: flex; /* Flexbox para alinhar conteúdo */
+  flex-direction: column; /* Organiza coluna vertical */
+  align-items: center; /* Centraliza horizontalmente */
+}
+
+/* Efeito ao passar o mouse sobre um item */
+.item:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15); /* Sombra mais forte */
+  transform: translateY(-5px); /* Levanta o item */
+}
+
+/* Estilo das imagens dentro dos itens */
+.item img {
+  width: 100%; /* Ocupa toda a largura do item */
+  height: 180px; /* Altura fixa */
+  object-fit: cover; /* Cobre o espaço sem distorcer */
+  border-radius: 16px 16px 0 0; /* Bordas arredondadas no topo */
+  user-select: none; /* Impede seleção da imagem */
+  opacity: 0; /* Inicialmente invisível para animação */
+  transform: translateY(20px); /* Desloca para baixo para efeito */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Animação suave */
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+/* Classe adicionada quando imagem fica visível na viewport */
+.item img.visivel {
+  opacity: 1; /* Torna visível */
+  transform: translateY(0); /* Remove deslocamento */
+}
+
+/* Estilo do texto com nome e número */
+.nome {
+  margin-top: 14px; /* Espaço acima */
+  padding: 0 12px 16px; /* Espaço interno */
+  text-align: center; /* Centraliza texto */
+  font-weight: 300; /* Fonte leve */
+  font-size: 1rem; /* Tamanho normal */
+  color: #555; /* Cor cinza escuro */
+  user-select: none; /* Impede seleção de texto */
+  width: 100%; /* Ocupa toda a largura do item */
+  box-sizing: border-box; /* Inclui padding na largura total */
+  letter-spacing: 0.03em; /* Espaçamento entre letras */
+}
+
+/* Estilos do modal */
+
+/* Container do modal (inicialmente escondido) */
+.modal {
+  display: none; /* Escondido */
+  position: fixed; /* Fixo na tela */
+  z-index: 1500; /* Fica acima de outros elementos */
+  left: 0; top: 0; /* Posição no canto superior esquerdo */
+  width: 100vw; height: 100vh; /* Ocupa toda a tela */
+  background: rgba(15, 15, 15, 0.9); /* Fundo escuro translúcido */
+
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  flex-direction: column; /* Organiza verticalmente */
+  padding: 30px 15px; /* Espaçamento interno */
+  box-sizing: border-box; /* Padding incluso na largura */
+  
+  animation: fadeInModal 0.3s ease forwards; /* Animação de entrada */
+}
+
+/* Animação para aparecer o modal */
+@keyframes fadeInModal {
+  from {
+    opacity: 0; /* Transparente no início */
+  }
+  to {
+    opacity: 1; /* Opaco no fim */
+  }
+}
+
+/* Imagem dentro do modal */
+.modal img {
+  max-width: 90vw; /* Máximo 90% da largura da viewport */
+  max-height: 80vh; /* Máximo 80% da altura da viewport */
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7); /* Sombra escura */
+  user-select: none; /* Impede seleção */
+  transition: transform 0.3s ease; /* Transição suave em transformações */
+}
+
+/* Legenda do modal */
+.modal-caption {
+  margin-top: 18px; /* Espaço acima */
+  color: #eee; /* Cor clara */
+  font-size: 1.4rem; /* Fonte maior */
+  font-weight: 300; /* Fonte leve */
+  text-align: center; /* Centralizado */
+  max-width: 90vw; /* Limita largura */
+  user-select: none; /* Impede seleção */
+  text-shadow: 0 0 6px rgba(0,0,0,0.6); /* Sombra para destaque */
+}
+
+/* Botão de fechar modal */
+
+.modal-close {
+  position: absolute; /* Posicionado fora do fluxo */
+  top: 20px; /* Distância do topo */
+  right: 25px; /* Distância da direita */
+  color: #eee; /* Cor clara */
+  font-size: 3rem; /* Tamanho grande */
+  font-weight: 600; /* Negrito */
+  cursor: pointer; /* Mãozinha para clique */
+  user-select: none; /* Sem seleção */
+  transition: color 0.25s ease; /* Transição suave na cor */
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.6)); /* Sombra para destaque */
+}
+
+/* Efeito hover no botão fechar */
+.modal-close:hover {
+  color: #bbb; /* Cor mais clara ao passar o mouse */
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)); /* Sombra mais forte */
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 400px) {
+  .item {
+    width: 140px; /* Reduz largura dos itens */
+  }
+
+  h1 {
+    font-size: 2rem; /* Diminui tamanho do título */
+    margin-bottom: 25px; /* Menor espaçamento */
+  }
+}
